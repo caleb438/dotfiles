@@ -1,5 +1,5 @@
--- Sets <leader>pv to file explorer
-vim.keymap.set("n", "<leader>pv", "<cmd>Explore<CR>")
+-- Sets <leader>pv to Oil file explorer
+vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
 
 
 -- Highlight when yanking text eg. yap(yank around paragraph)
