@@ -25,7 +25,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   ui = {
-	  border = "rouded",
+	  border = "rounded",
 	  title = " lazy.nvim ",
   },
   -- colorscheme that will be used when installing plugins.
