@@ -1,6 +1,11 @@
 -- Sets <leader>pv to Oil file explorer
 vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
 
+-- Sets J and K to move lines up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
+
 -- LSP Mappings
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
