@@ -1,19 +1,116 @@
--- Sets <leader>pv to Oil file explorer
-vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>")
+---------------------------------
+-- General
+---------------------------------
+local map = vim.keymap.set
 
--- Sets J and K to move lines up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+---------------------------------
+-- File Explorer
+---------------------------------
+map("n", "<leader>pv", "<cmd>Oil<CR>", {
+	desc = "Open Oil",
+})
 
+---------------------------------
+-- Editing
+---------------------------------
+map("v", "K", ":m '>-2<CR>gv=gv", {
+	desc = "Move selection down",
+})
+map("v", "J", ":m '>+1<CR>gv=gv", {
+	desc = "Move selection up",
+})
 
--- LSP Mappings
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+---------------------------------
+-- LSP Navigation
+---------------------------------
+map("n", "K", vim.lsp.buf.hover, {
+	desc = "Hover Documentation",
+})
 
--- Highlight when yanking text eg. yap(yank around paragraph)
+map("n", "gd", vim.lsp.buf.definition, {
+	desc = "Go to Definition",
+})
+
+map("n", "gD", vim.lsp.buf.definition, {
+	desc = "Go to Declaration",
+})
+
+map("n", "gr", vim.lsp.buf.references, {
+	desc = "References",
+})
+
+map("n", "gi", vim.lsp.buf.implementation, {
+	desc = "Go to Implementation",
+})
+
+map("n", "gt", vim.lsp.buf.type_definition, {
+	desc = "Type Definition",
+})
+
+---------------------------------
+-- Code
+---------------------------------
+map("n", "<leader>ca", vim.lsp.buf.code_action, {
+	desc = "Code Action",
+})
+
+map("v", "<leader>ca", vim.lsp.buf.code_action, {
+	desc = "Code Action",
+})
+
+map("n", "<leader>cr", vim.lsp.buf.rename, {
+	desc = "Rename Symbol",
+})
+
+---------------------------------
+-- Diagnostics
+---------------------------------
+map("n", "<leader>de", vim.diagnostic.open_float, {
+	desc = "Line Diagnostics",
+})
+
+map("n", "<leader>dq", vim.diagnostic.setloclist, {
+	desc = "Diagnostics List",
+})
+
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, {
+	desc = "Next Diagnostic",
+})
+
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, {
+	desc = "Previous Diagnostic",
+})
+
+---------------------------------
+-- Formatting
+---------------------------------
+map("n", "<leader>gf", function()
+	require("conform").format({
+		async = true,
+		lsp_format = "fallback",
+	})
+end, {
+	desc = "Format Buffer",
+})
+
+map("v", "<leader>gf", function()
+	require("conform").format({
+		async = true,
+		lsp_format = "fallback",
+	})
+end, {
+	desc = "Format Selection",
+})
+
+---------------------------------
+-- Highlight on Yank
+---------------------------------
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
+	desc = "Highlight on yank",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()

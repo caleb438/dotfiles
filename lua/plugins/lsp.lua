@@ -23,8 +23,20 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
+			signature = { enabled = true },
 		},
 	},
+
+  -- LuaSnip as snippet engine and friendly-snippets to provide snippets
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "rafamadriz/friendly-snippets"
+    },
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
 
 	-- Fidget.nvim for LSP Progress status UI
 	{
@@ -32,7 +44,7 @@ return {
 		opts = {
 			progress = {
 				display = {
-					done_ttl = 3, -- How long completed messages stay on screen (seconds)
+					done_ttl = 2, -- How long completed messages stay on screen (seconds)
 				},
 			},
 			notification = {
@@ -45,60 +57,46 @@ return {
 
 	-- LSP config and Mason
 	{
-		"mason-org/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"mason-org/mason.nvim",
-			"neovim/nvim-lspconfig",
 			"saghen/blink.cmp",
 			"j-hui/fidget.nvim",
 		},
 		config = function()
+			-- Get capabilities from blink.cmp
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 			-- Define language servers and custom configurations
 			local servers = {
 				lua_ls = {
+					capabilities = capabilities,
 					settings = {
 						Lua = {
-							runtime = { version = "LuaJIT" },
 							completion = { callSnippet = "Replace" },
 							workspace = {
 								checkThirdParty = false,
 								library = vim.api.nvim_get_runtime_file("", true),
 							},
-							diagnostics = { globals = { "vim" } },
 							telemetry = { enable = false },
 						},
 					},
 				},
-				ts_ls = {},
-				html = {},
-				cssls = {},
-				pyright = {},
-				rust_analyzer = {},
+				basedpyright = { capabilities = capabilities },
+				vtsls = { capabilities = capabilities },
+				html = { capabilities = capabilities },
+				cssls = { capabilities = capabilities },
+				rust_analyzer = { capabilities = capabilities },
 				taplo = {
 					filetypes = { "toml" },
+					capabilities = capabilities,
 				},
 			}
-
-			-- Get capabilities from blink.cmp
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-			-- Ensure Mason installs binaries
-			local ensure_installed = {}
-			for server, _ in pairs(servers) do
-				table.insert(ensure_installed, server)
-			end
-
-			require("mason-lspconfig").setup({
-				ensure_installed = ensure_installed,
-			})
-
-			-- Configure and enable servers using native Nvim 0.11+ API
-			for server, config in pairs(servers) do
-				config.capabilities = capabilities
-				vim.lsp.config(server, config)
-				vim.lsp.enable(server)
-			end
+      for name, config in pairs(servers) do
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
+      end
 		end,
 	},
 }
