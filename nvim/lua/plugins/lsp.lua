@@ -27,20 +27,22 @@ return {
 		},
 	},
 
-  -- LuaSnip as snippet engine and friendly-snippets to provide snippets
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets"
-    },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-  },
+	-- LuaSnip as snippet engine and friendly-snippets to provide snippets
+	{
+		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+	},
 
 	-- Fidget.nvim for LSP Progress status UI
 	{
 		"j-hui/fidget.nvim",
+		event = "LspAttach",
 		opts = {
 			progress = {
 				display = {
@@ -62,7 +64,6 @@ return {
 		dependencies = {
 			"mason-org/mason.nvim",
 			"saghen/blink.cmp",
-			"j-hui/fidget.nvim",
 		},
 		config = function()
 			-- Get capabilities from blink.cmp
@@ -93,10 +94,10 @@ return {
 					capabilities = capabilities,
 				},
 			}
-      for name, config in pairs(servers) do
-        vim.lsp.config(name, config)
-        vim.lsp.enable(name)
-      end
+			for name, config in pairs(servers) do
+				vim.lsp.config(name, config)
+				vim.lsp.enable(name)
+			end
 		end,
 	},
 }

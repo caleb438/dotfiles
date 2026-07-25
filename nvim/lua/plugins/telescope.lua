@@ -8,6 +8,7 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
+    cmd = "Telescope",
 		keys = {
 			{
 				"<leader>ff",
