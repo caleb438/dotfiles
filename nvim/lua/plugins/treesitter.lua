@@ -15,6 +15,7 @@ return {
 			"vim",
 			"vimdoc",
 			"query",
+			"bash",
 		},
 		highlight = { enable = true },
 		indent = { enable = true },

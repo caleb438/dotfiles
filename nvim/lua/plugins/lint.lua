@@ -20,6 +20,8 @@ return {
 			typescriptreact = { "eslint_d" },
 
 			markdown = { "markdownlint" },
+
+      bash = { "shellcheck" },
 		}
 
 		local lint_group = vim.api.nvim_create_augroup("nvim-lint", { clear = true })

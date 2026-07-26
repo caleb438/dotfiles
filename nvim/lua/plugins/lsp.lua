@@ -93,6 +93,7 @@ return {
 					filetypes = { "toml" },
 					capabilities = capabilities,
 				},
+				bashls = { capabilities = capabilities },
 			}
 			for name, config in pairs(servers) do
 				vim.lsp.config(name, config)
