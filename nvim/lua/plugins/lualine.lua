@@ -4,7 +4,7 @@ return {
 	opts = {
 		options = {
 			-- theme = require("catppuccin.utils.lualine")("mocha"),
-			theme = "nord",
+			theme = "petrol",
 			icons_enabled = true,
 			component_separators = { left = "|", right = "|" },
 			section_separators = { left = "", right = "" },

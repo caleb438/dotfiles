@@ -1,19 +1,29 @@
 return {
 	{
+		dir = vim.fn.expand("~/projects/petrol.nvim"),
+		name = "petrol.nvim",
+		lazy = false,
+		priority = 1000,
+
+		config = function()
+			vim.cmd.colorscheme("petrol")
+		end,
+	},
+	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		priority = 1000, -- Load early during startup
+    lazy = true,
 		opts = {
-			flavour = "mocha", -- mocha, macchiato, frappe, latte
+			flavour = "mocha",
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-  {
-    "shaunsingh/nord.nvim",
-    name = "nord",
-    lazy = true,
-  }
+	{
+		"shaunsingh/nord.nvim",
+		name = "nord",
+		lazy = true,
+	},
 }

@@ -1,4 +1,4 @@
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("petrol")
 vim.o.laststatus = 2          -- makes neovim always display status bar
 
 vim.opt.nu = true             -- displays line numbers
