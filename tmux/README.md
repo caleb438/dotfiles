@@ -16,37 +16,11 @@ keybinds.conf
 status.conf
     Status bar layout.
 
-plugins.conf
-    TPM and plugins.
-
-themes/
-    Theme-specific configuration.
-
 ## Installation
 
 Clone the repository and symlink the directory to:
 
 ~/.config/tmux
-
-Install TPM:
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-Start tmux.
-
-Press:
-
-Prefix + I
-
-to install plugins.
-
-## Changing Themes
-
-Replace the sourced theme in tmux.conf:
-
-source-file ~/.config/tmux/themes/catppuccin.conf
-
-with another theme file.
 
 ## Useful Shortcuts
 
