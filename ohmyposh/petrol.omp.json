@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+
+  "palette": {
+    "fg": "#D6DEE3",
+    "fg_dim": "#9CAAB3",
+    "comment": "#667580",
+
+    "petrol": "#3F8E9C",
+    "cyan": "#63C7D8",
+    "blue": "#7AA2F7",
+
+    "green": "#86B97E",
+    "yellow": "#C9A86A",
+    "orange": "#C98758",
+    "red": "#C56E74"
+  },
+
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "p:comment",
+          "template": "{{ .Icon }} "
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "p:blue",
+          "template": "{{ .UserName }}{{ if .SSHSession }}@{{ .HostName }}{{ else }}@{{ .OS }}{{ end }} "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "p:petrol",
+          "template": "{{ .Path }} ",
+          "options": {
+            "home_icon": "~",
+            "folder_icon": "",
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "p:cyan",
+          "template": "{{ .HEAD }} ",
+          "options": {
+            "branch_icon": " ",
+            "commit_icon": " ",
+            "merge_icon": " ",
+            "rebase_icon": " ",
+            "revert_icon": " ",
+            "cherry_pick_icon": " ",
+            "tag_icon": " ",
+            "no_commits_icon": "󰜘 ",
+            "fetch_status": false,
+            "fetch_upstream_icon": false
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:petrol",
+          "template": "❯"
+        }
+      ]
+    }
+  ],
+
+  "final_space": true,
+  "version": 4
+}
