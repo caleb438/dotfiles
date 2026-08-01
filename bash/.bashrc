@@ -75,7 +75,7 @@ alias vi='nvim'
 alias ff='fastfetch'
 
 # oh-my-posh setup command
-eval "$(oh-my-posh init bash --config "$HOME"/.config/ohmyposh/catppuccin.omp.json)"
+eval "$(oh-my-posh init bash --config "$HOME"/.config/ohmyposh/petrol.omp.json)"
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
