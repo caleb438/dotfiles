@@ -3,7 +3,7 @@
 BATTERY=$(find /sys/class/power_supply -maxdepth 1 -name 'BAT*' | head -n1)
 
 if [[ ! -d "$BATTERY" ]]; then
-    echo "󰂑"
+    echo "#[fg=#667580󰂑"
     exit 0
 fi
 
@@ -25,10 +25,16 @@ else
     icon="󰁺"
 fi
 
-# Show charging icon when actively charging.
+# Colors from the Petrol palette
 if [[ "$status" == "Charging" ]]; then
-    icon="󰂄"
+    color="#63C7D8"      # cyan
+elif (( capacity >= 60 )); then
+    color="#86B97E"      # green
+elif (( capacity >= 30 )); then
+    color="#C9A86A"      # yellow
+else
+    color="#C56E74"      # red
 fi
 
-echo "$icon ${capacity}%"
+echo "#[fg=${color}]$icon ${capacity}%"
 
