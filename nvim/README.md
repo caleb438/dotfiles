@@ -22,13 +22,6 @@ My personal Neovim configuration built from scratch using lazy.nvim
 - Git
 - Nerd Font
 - ripgrep
-- fd (optional)
-
-### Clone
-
-```
-git clone https://github.com/caleb438/neovim-dotfiles.git
-```
 
 ---
 
@@ -88,22 +81,10 @@ README.md
 
 ---
 
-## Important Keybindings
-
-| Key | Action |
-|------|--------|
-| <leader>ff | Find files (including hidden) |
-| <leader>fg | Live grep |
-| <leader>pv | Open Oil |
-| gd | Go to Definition |
-| <leader>gf | Format current buffer|
-
----
-
 ## Appearance
 
 Theme:
-Catppuccin Mocha
+Petrol (custom theme)
 
 Font: UbuntuMono Nerd Font Mono
 
