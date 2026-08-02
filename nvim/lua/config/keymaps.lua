@@ -85,6 +85,12 @@ end, {
 	desc = "Previous Diagnostic",
 })
 
+map("n", "<leader>di", function()
+	vim.diagnostic.config({
+		virtual_text = not vim.diagnostic.config().virtual_text,
+	})
+end, { desc = "Toggle inline diagnostics" })
+
 ---------------------------------
 -- Formatting
 ---------------------------------
