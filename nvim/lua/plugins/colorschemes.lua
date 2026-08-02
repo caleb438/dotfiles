@@ -4,15 +4,23 @@ return {
 		name = "petrol.nvim",
 		lazy = false,
 		priority = 1000,
-
-		config = function()
+		opts = {
+			transparent = false,
+			styles = {
+				comments = { italic = true },
+				keywords = { bold = true },
+				functions = { italic = false, bold = true },
+			},
+		},
+		config = function(_, opts)
+			require("petrol").setup(opts)
 			vim.cmd.colorscheme("petrol")
 		end,
 	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-    lazy = true,
+		lazy = true,
 		opts = {
 			flavour = "mocha",
 		},
