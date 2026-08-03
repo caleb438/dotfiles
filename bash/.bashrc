@@ -90,7 +90,7 @@ fi
 # Automatically attach to the "main" tmux session when opening a terminal
 # Skip if already inside tmux
 if [ -z "$TMUX" ]; then
-  tmux attach-session -t main || tmux new-session -s main
+  tmux attach-session || tmux new-session
 fi
 
 # enable programmable completion features (you don't need to enable
