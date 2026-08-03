@@ -8,8 +8,8 @@ return {
 			transparent = false,
 			styles = {
 				comments = { italic = true },
-				keywords = { bold = true },
-				functions = { italic = false, bold = true },
+				keywords = { bold = false },
+				functions = { italic = true, bold = false },
 			},
 		},
 		config = function(_, opts)
