@@ -91,6 +91,11 @@ map("n", "<leader>di", function()
 	})
 end, { desc = "Toggle inline diagnostics" })
 
+map("n", "<leader>u", function()
+  pcall(vim.cmd.packadd, "nvim.undotree")
+  require("undotree").open()
+end, { desc = "Toggle undotree" })
+
 ---------------------------------
 -- Formatting
 ---------------------------------
