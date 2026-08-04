@@ -18,6 +18,7 @@ return {
 			{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
 			{ "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Telescope help tags" },
+			{ "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Telescope file diagnostics" },
 		},
 	},
 	{
