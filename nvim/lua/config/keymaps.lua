@@ -31,7 +31,7 @@ map("n", "gd", vim.lsp.buf.definition, {
 	desc = "Go to Definition",
 })
 
-map("n", "gD", vim.lsp.buf.definition, {
+map("n", "gD", vim.lsp.buf.declaration, {
 	desc = "Go to Declaration",
 })
 
@@ -79,7 +79,7 @@ end, {
 	desc = "Next Diagnostic",
 })
 
-map("n", "]d", function()
+map("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end, {
 	desc = "Previous Diagnostic",
