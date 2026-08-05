@@ -27,24 +27,8 @@ map("n", "K", vim.lsp.buf.hover, {
 	desc = "Hover Documentation",
 })
 
-map("n", "gd", vim.lsp.buf.definition, {
-	desc = "Go to Definition",
-})
-
 map("n", "gD", vim.lsp.buf.declaration, {
 	desc = "Go to Declaration",
-})
-
-map("n", "gr", vim.lsp.buf.references, {
-	desc = "References",
-})
-
-map("n", "gi", vim.lsp.buf.implementation, {
-	desc = "Go to Implementation",
-})
-
-map("n", "gt", vim.lsp.buf.type_definition, {
-	desc = "Type Definition",
 })
 
 ---------------------------------
